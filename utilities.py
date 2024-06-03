@@ -49,3 +49,19 @@ def is_captcha_present(driver):
         return True
     except NoSuchElementException:
         return False
+
+def get_username(argv): 
+    if "--username" in argv: 
+        username_index = argv.index("--username")
+        return argv[username_index+1]
+    else: 
+        print(colored("No username provided, Exited code.", "red"))
+        exit()
+
+def get_password(argv): 
+    if "--password" in argv: 
+        password_index = argv.index("--password")
+        return argv[password_index+1]
+    else: 
+        print(colored("No password provided, Exited code.", "red"))
+        exit()

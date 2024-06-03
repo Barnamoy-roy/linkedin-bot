@@ -16,6 +16,9 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 
 def main():
 
+    username_str = str(get_username(sys.argv))
+    password_str = str(get_password(sys.argv))  
+
     if "--help" in sys.argv: 
         print(colored("  --n <number> : Number of requests to send", "green"))
         print(colored("  --company <company_name> : Company name to search for", "yellow"))
@@ -25,15 +28,15 @@ def main():
         return 
 
     # open linkedin login page 
-    driver.get("https://www.linkedin.com/login")
+    driver.get("https://www.linkedin.com/login")\
 
     # fill username 
     username = driver.find_element(By.ID, "username")
-    username.send_keys("roybarnamoy13@gmail.com")
+    username.send_keys(username_str)
 
     # enter password 
     password = driver.find_element(By.ID, "password")
-    password.send_keys("navy3121")
+    password.send_keys(password_str)
 
     login_button = driver.find_element(By.XPATH, '//*[@type="submit"]')
     login_button.click()
